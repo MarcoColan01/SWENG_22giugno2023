@@ -31,4 +31,12 @@ class CentralStationPresenterTest {
         SUT.action("Segnala", "A4,87, ");
         verify(view).showError("campo descrizione mancante");
     }
+
+    @Test
+    void testDescrizioneOk(){
+        CentralStationView view = mock(CentralStationView.class);
+        CentralStationPresenter SUT = new CentralStationPresenter(view);
+        SUT.action("Segnala", "A4,87,Incidente");
+        verify(view).showSuccess();
+    }
 }
