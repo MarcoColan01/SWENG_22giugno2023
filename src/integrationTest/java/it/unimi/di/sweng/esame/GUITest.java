@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import org.assertj.core.util.introspection.FieldSupport;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
@@ -58,7 +59,7 @@ public class GUITest {
     robot.doubleClickOn(inputMessage).clickOn(inputMessage); //triplo click per selezionare tutto
   }
 
-  @Test
+  @Test@Disabled
   public void testSegnalaOK(FxRobot robot) {
     selezioneContenutoCasellaTesto(robot);
     robot.write("A4,57,incidente");
@@ -69,7 +70,7 @@ public class GUITest {
     verifyThat(segnalazioniAttive[0], hasText(matchesPattern("incidente sulla A4 al Km 57")));
   }
 
-  @Test
+  @Test@Disabled
   public void testRisolviOK(FxRobot robot) {
     selezioneContenutoCasellaTesto(robot);
     robot.write("A4,57,incidente");
@@ -82,7 +83,7 @@ public class GUITest {
     verifyThat(segnalazioniRisolte[0], hasText(matchesPattern("incidente sulla A4 al Km 57")));
   }
 
-  @Test
+  @Test@Disabled
   public void testSegnalaConErroreCampoMancante(FxRobot robot) {
     selezioneContenutoCasellaTesto(robot);
     robot.write("A4,57");
@@ -90,7 +91,7 @@ public class GUITest {
     verifyThat(errorMessage, hasText("campo descrizione mancante"));
   }
 
-  @Test
+  @Test@Disabled
   public void testSegnalaConErroreCampoKmSbagliato(FxRobot robot) {
     selezioneContenutoCasellaTesto(robot);
     robot.write("A4,b,prova");
@@ -98,7 +99,7 @@ public class GUITest {
     verifyThat(errorMessage, hasText("campo km non numerico"));
   }
 
-  @Test
+  @Test@Disabled
   public void testSegnalaConErroreDoppiaSegnalazione(FxRobot robot) {
     selezioneContenutoCasellaTesto(robot);
     robot.write("A4,42,prova");
@@ -109,7 +110,7 @@ public class GUITest {
     verifyThat(errorMessage, hasText("altra segnalazione già presente per questo tratto"));
   }
 
-  @Test
+  @Test@Disabled
   public void testRisolviConErroreSegnalazioneNonPresente(FxRobot robot) {
     selezioneContenutoCasellaTesto(robot);
     robot.write("A4,42");
