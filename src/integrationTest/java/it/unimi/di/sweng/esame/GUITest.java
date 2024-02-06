@@ -70,7 +70,7 @@ public class GUITest {
     verifyThat(segnalazioniAttive[0], hasText(matchesPattern("incidente sulla A4 al Km 57")));
   }
 
-  @Test@Disabled
+  @Test
   public void testRisolviOK(FxRobot robot) {
     selezioneContenutoCasellaTesto(robot);
     robot.write("A4,57,incidente");
