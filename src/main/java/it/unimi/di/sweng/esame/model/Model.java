@@ -30,8 +30,9 @@ public class Model {
         String[] s = segnalazione.split(",");
         int km = Integer.parseInt(s[1]);
         if(segnalazioni.containsKey(km)){
-            if(segnalazioni.get(km).tratta().equals(s[0])){
-                risolte.put(segnalazioni.get(km).tratta(), segnalazioni.get(km));
+            Segnalazione curr = segnalazioni.get(km);
+            if(curr.tratta().equals(s[0])){
+                risolte.put(curr.tratta(), curr);
                 segnalazioni.remove(km);
             }
         }else throw new IllegalArgumentException("segnalazione non presente per questo tratto");
