@@ -15,4 +15,12 @@ class CentralStationPresenterTest {
         SUT.action("Segnala", "23,0,incidente");
         verify(view).showError("campo tratto non valido");
     }
+
+    @Test
+    void testKmSbagliato(){
+        CentralStationView view = mock(CentralStationView.class);
+        CentralStationPresenter SUT = new CentralStationPresenter(view);
+        SUT.action("Segnala", "A4,ciao,incidente");
+        verify(view).showError("campo km non numerico");
+    }
 }
