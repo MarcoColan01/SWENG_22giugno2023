@@ -23,5 +23,9 @@ public class CentralStationPresenter implements Presenter{
             view.showError("campo km non numerico");
             return;
         }
+        if(arg[2].isBlank()){
+            view.showError("campo descrizione mancante");
+            return;
+        }
     }
 }
