@@ -66,7 +66,7 @@ class DisplayStrategyTest {
 
     @Test
     void testShowRisolte(){
-        DisplayStrategy SUT = new SegnalateStrategy();
+        DisplayStrategy SUT = new RisolteStrategy();
         List<Segnalazione> segnalazioni = new ArrayList<>();
         Segnalazione s1 = Segnalazione.creaSegnalazione("A4,45,Incidente");
         Segnalazione s2 = Segnalazione.creaSegnalazione("A1,37,Incidente");
