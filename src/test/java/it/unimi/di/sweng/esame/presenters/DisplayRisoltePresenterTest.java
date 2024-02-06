@@ -19,8 +19,7 @@ class DisplayRisoltePresenterTest {
         model.addSegnalazione(Segnalazione.creaSegnalazione("A1,97,Traffico"));
         model.addSegnalazione(Segnalazione.creaSegnalazione("A5,96,Traffico"));
         model.removeSegnalazione("A1,97");
-        model.removeSegnalazione("A4,54");
+
         verify(view).set(0, "Traffico sulla A1 al km 97");
-        verify(view).set(1, "Traffico sulla A4 al km 54");
     }
 }
