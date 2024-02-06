@@ -27,5 +27,6 @@ public class CentralStationPresenter implements Presenter{
             view.showError("campo descrizione mancante");
             return;
         }
+        view.showSuccess();
     }
 }
