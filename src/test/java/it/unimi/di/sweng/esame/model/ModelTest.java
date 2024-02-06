@@ -22,4 +22,13 @@ class ModelTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("altra segnalazione già presente per questo tratto");
     }
+
+    @Test
+    void testRisolviSegnalazione(){
+        Model SUT = new Model();
+        SUT.addSegnalazione(Segnalazione.creaSegnalazione("A4,57,Incidente"));
+        SUT.removeSegnalazione("A4,57");
+        assertThat(SUT.getSegnalazioni()).hasSize(0);
+        assertThat(SUT.getRisolte()).hasSize(1);
+    }
 }

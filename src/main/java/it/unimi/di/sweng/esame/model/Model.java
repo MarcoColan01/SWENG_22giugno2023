@@ -20,4 +20,7 @@ public class Model {
     public List<Segnalazione> getSegnalazioni() {
         return new ArrayList<>(segnalazioni.values());
     }
+
+    public void removeSegnalazione(String s) {
+    }
 }
