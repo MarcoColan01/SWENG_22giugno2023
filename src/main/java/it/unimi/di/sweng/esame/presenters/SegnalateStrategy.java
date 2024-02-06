@@ -22,7 +22,7 @@ public class SegnalateStrategy implements DisplayStrategy {
         List<String> s = new ArrayList<>();
         sortSegnalazioni(segnalazioni);
         for(Segnalazione segnalazione: segnalazioni){
-            s.add(segnalazione.descrizione() + " sulla " + segnalazione.tratta() + " al km " + segnalazione.km());
+            s.add(segnalazione.toString());
         }
         return s;
     }

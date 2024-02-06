@@ -19,4 +19,9 @@ public record Segnalazione(@NotNull String tratta, int km, @NotNull String descr
             throw new IllegalArgumentException("campo descrizione mancante");
         return new Segnalazione(arg[0], km, arg[2]);
     }
+
+    @Override
+    public String toString(){
+        return descrizione + " sulla " + tratta + " al km " + km;
+    }
 }
