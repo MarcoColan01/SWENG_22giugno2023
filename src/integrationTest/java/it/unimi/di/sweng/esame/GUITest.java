@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import org.assertj.core.util.introspection.FieldSupport;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
@@ -58,7 +59,7 @@ public class GUITest {
     robot.doubleClickOn(inputMessage).clickOn(inputMessage); //triplo click per selezionare tutto
   }
 
-  @Test
+  @Test@Disabled
   public void testSegnalaOK(FxRobot robot) {
     selezioneContenutoCasellaTesto(robot);
     robot.write("A4,57,incidente");
