@@ -91,7 +91,7 @@ public class GUITest {
     verifyThat(errorMessage, hasText("campo descrizione mancante"));
   }
 
-  @Test@Disabled
+  @Test
   public void testSegnalaConErroreCampoKmSbagliato(FxRobot robot) {
     selezioneContenutoCasellaTesto(robot);
     robot.write("A4,b,prova");
