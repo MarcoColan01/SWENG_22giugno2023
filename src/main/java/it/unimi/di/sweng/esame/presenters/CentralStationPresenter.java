@@ -9,13 +9,12 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class CentralStationPresenter implements Presenter, Observer<List<Segnalazione>> {
+public class CentralStationPresenter implements Presenter {
     private final @NotNull CentralStationView view;
     private final @NotNull Model model;
     public CentralStationPresenter(@NotNull CentralStationView view, Model model) {
         this.view = view;
         this.model = model;
-        model.addObserver(this);
         view.addHandlers(this);
     }
 
@@ -37,10 +36,5 @@ public class CentralStationPresenter implements Presenter, Observer<List<Segnala
                 view.showError(e.getMessage());
             }
         }
-    }
-
-    @Override
-    public void update(@NotNull Observable<List<Segnalazione>> subject) {
-
     }
 }
