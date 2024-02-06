@@ -15,7 +15,8 @@ public record Segnalazione(@NotNull String tratta, int km, @NotNull String descr
         }catch (NumberFormatException e) {
             throw new IllegalArgumentException("campo km non numerico");
         }
-        if(arg[2].isBlank()) throw new IllegalArgumentException("campo descrizione mancante");
+        if(arg.length == 2 || arg[2].isBlank())
+            throw new IllegalArgumentException("campo descrizione mancante");
         return new Segnalazione(arg[0], km, arg[2]);
     }
 }
