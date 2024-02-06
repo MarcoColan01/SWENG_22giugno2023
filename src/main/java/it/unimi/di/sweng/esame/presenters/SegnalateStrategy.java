@@ -15,4 +15,9 @@ public class SegnalateStrategy implements DisplayStrategy {
             return res;
         });
     }
+
+    @Override
+    public List<String> showSegnalazioni(@NotNull List<Segnalazione> segnalazioni) {
+        return null;
+    }
 }

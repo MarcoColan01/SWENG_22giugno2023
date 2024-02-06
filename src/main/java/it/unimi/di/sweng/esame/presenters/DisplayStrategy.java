@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface DisplayStrategy {
     void sortSegnalazioni(@NotNull List<Segnalazione> segnalazioni);
+
+    List<String> showSegnalazioni(@NotNull List<Segnalazione> segnalazioni);
 }

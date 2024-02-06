@@ -27,4 +27,24 @@ class DisplayStrategyTest {
 
     }
 
+    @Test
+    void testShowSegnalate(){
+        DisplayStrategy SUT = new SegnalateStrategy();
+        List<Segnalazione> segnalazioni = new ArrayList<>();
+        Segnalazione s1 = Segnalazione.creaSegnalazione("A4,45,Incidente");
+        Segnalazione s2 = Segnalazione.creaSegnalazione("A1,37,Incidente");
+        Segnalazione s3 = Segnalazione.creaSegnalazione("A3,85,Incidente");
+        Segnalazione s4 = Segnalazione.creaSegnalazione("A4,14,Incidente");
+        segnalazioni.add(s1);
+        segnalazioni.add(s2);
+        segnalazioni.add(s3);
+        segnalazioni.add(s4);
+        assertThat(SUT.showSegnalazioni(segnalazioni)).containsExactly(
+                "Incidente sulla A1 al km 37",
+                "Incidente sulla A3 al km 85",
+                "Incidente sulla A4 al km 14",
+                "Incidente sulla A4 al km 45"
+        );
+    }
+
 }
