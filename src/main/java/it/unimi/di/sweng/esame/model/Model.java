@@ -19,8 +19,10 @@ public class Model implements Observable<List<Segnalazione>> {
                 throw new IllegalArgumentException("altra segnalazione già presente per questo tratto");
         }
         segnalazioni.put(segnalazione.km(), segnalazione);
+        notifyObservers();
     }
 
+    @Override
     public List<Segnalazione> getSegnalazioni() {
         return new ArrayList<>(segnalazioni.values());
     }
