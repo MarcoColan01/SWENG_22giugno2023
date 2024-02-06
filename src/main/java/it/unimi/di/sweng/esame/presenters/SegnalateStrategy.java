@@ -3,6 +3,7 @@ package it.unimi.di.sweng.esame.presenters;
 import it.unimi.di.sweng.esame.model.Segnalazione;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -18,6 +19,11 @@ public class SegnalateStrategy implements DisplayStrategy {
 
     @Override
     public List<String> showSegnalazioni(@NotNull List<Segnalazione> segnalazioni) {
-        return null;
+        List<String> s = new ArrayList<>();
+        sortSegnalazioni(segnalazioni);
+        for(Segnalazione segnalazione: segnalazioni){
+            s.add(segnalazione.descrizione() + " sulla " + segnalazione.tratta() + " al km " + segnalazione.km());
+        }
+        return s;
     }
 }
