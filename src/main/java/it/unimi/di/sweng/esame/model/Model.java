@@ -1,5 +1,7 @@
 package it.unimi.di.sweng.esame.model;
 
+import it.unimi.di.sweng.esame.Observable;
+import it.unimi.di.sweng.esame.Observer;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -7,9 +9,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Model {
+public class Model implements Observable<List<Segnalazione>> {
     private final @NotNull Map<Integer, Segnalazione> segnalazioni = new HashMap<>();
     private final @NotNull Map<String, Segnalazione> risolte = new HashMap<>();
+    private final @NotNull List<Observer<List<Segnalazione>>> observers = new ArrayList<>();
     public void addSegnalazione(@NotNull Segnalazione segnalazione) {
         if(segnalazioni.containsKey(segnalazione.km())){
             if(segnalazioni.get(segnalazione.km()).tratta().equals(segnalazione.tratta()))
@@ -36,5 +39,17 @@ public class Model {
                 segnalazioni.remove(km);
             }
         }else throw new IllegalArgumentException("segnalazione non presente per questo tratto");
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (Observer<List<Segnalazione>> observer : observers) {
+            observer.update(this);
+        }
+    }
+
+    @Override
+    public void addObserver(@NotNull Observer<List<Segnalazione>> observer) {
+        observers.add(observer);
     }
 }
