@@ -7,4 +7,5 @@ public interface Observable <T>{
     void addObserver(@NotNull Observer<T> observer);
 
     T getSegnalazioni();
+    T getRisolte();
 }

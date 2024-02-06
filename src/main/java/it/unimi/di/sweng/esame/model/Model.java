@@ -4,42 +4,63 @@ import it.unimi.di.sweng.esame.Observable;
 import it.unimi.di.sweng.esame.Observer;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Model implements Observable<List<Segnalazione>> {
-    private final @NotNull Map<Integer, Segnalazione> segnalazioni = new HashMap<>();
-    private final @NotNull Map<String, Segnalazione> risolte = new HashMap<>();
+    private final @NotNull Map<Integer, List<Segnalazione>> segnalazioni = new HashMap<>();
+    private final @NotNull Map<String, List<Segnalazione>> risolte = new LinkedHashMap<>();
     private final @NotNull List<Observer<List<Segnalazione>>> observers = new ArrayList<>();
     public void addSegnalazione(@NotNull Segnalazione segnalazione) {
         if(segnalazioni.containsKey(segnalazione.km())){
-            if(segnalazioni.get(segnalazione.km()).tratta().equals(segnalazione.tratta()))
-                throw new IllegalArgumentException("altra segnalazione già presente per questo tratto");
+            for(Segnalazione s: segnalazioni.get(segnalazione.km())) {
+                if (s.tratta().equals(segnalazione.tratta()))
+                    throw new IllegalArgumentException("altra segnalazione già presente per questo tratto");
+            }
+            segnalazioni.get(segnalazione.km()).add(segnalazione);
+            notifyObservers();
+        }else{
+            List<Segnalazione> s = new ArrayList<>();
+            s.add(segnalazione);
+            segnalazioni.put(segnalazione.km(), s);
+            notifyObservers();
         }
-        segnalazioni.put(segnalazione.km(), segnalazione);
-        notifyObservers();
     }
 
     @Override
     public List<Segnalazione> getSegnalazioni() {
-        return new ArrayList<>(segnalazioni.values());
+        List<Segnalazione> value = new ArrayList<>();
+        for(List<Segnalazione> s: segnalazioni.values()){
+            value.addAll(s);
+        }
+        return new ArrayList<>(value);
     }
-
+    @Override
     public List<Segnalazione> getRisolte() {
-        return new ArrayList<>(risolte.values());
+        List<Segnalazione> value = new ArrayList<>();
+        for(List<Segnalazione> s: risolte.values()){
+            value.addAll(s);
+        }
+        return new ArrayList<>(value);
     }
 
     public void removeSegnalazione(@NotNull String segnalazione) {
         String[] s = segnalazione.split(",");
         int km = Integer.parseInt(s[1]);
         if(segnalazioni.containsKey(km)){
-            Segnalazione curr = segnalazioni.get(km);
-            if(curr.tratta().equals(s[0])){
-                risolte.put(curr.tratta(), curr);
-                segnalazioni.remove(km);
+            List<Segnalazione> curr = segnalazioni.get(km);
+            for(Segnalazione segnalazioneCurr: curr){
+                if(segnalazioneCurr.tratta().equals(s[0])){
+                    if(risolte.containsKey(segnalazioneCurr.tratta())){
+                        risolte.get(segnalazioneCurr.tratta()).add(segnalazioneCurr);
+                    }else{
+                        List<Segnalazione> nuova = new ArrayList<>();
+                        nuova.add(segnalazioneCurr);
+                        risolte.put(segnalazioneCurr.tratta(), nuova);
+                    }
+                    segnalazioni.remove(segnalazioneCurr.km());
+                }
             }
+            notifyObservers();
         }else throw new IllegalArgumentException("segnalazione non presente per questo tratto");
     }
 
