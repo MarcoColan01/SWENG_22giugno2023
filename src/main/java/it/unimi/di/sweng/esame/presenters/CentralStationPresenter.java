@@ -17,5 +17,11 @@ public class CentralStationPresenter implements Presenter{
             view.showError("campo tratto non valido");
             return;
         }
+        try{
+            int km = Integer.parseInt(arg[1]);
+        }catch (NumberFormatException e){
+            view.showError("campo km non numerico");
+            return;
+        }
     }
 }
