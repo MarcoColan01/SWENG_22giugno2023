@@ -49,4 +49,13 @@ class CentralStationPresenterTest {
         SUT.action("Segnala","A4,87,Incidente");
         verify(view).showError("altra segnalazione già presente per questo tratto");
     }
+
+    @Test
+    void testRisolviSegnalazioneNonPresente(){
+        CentralStationView view = mock(CentralStationView.class);
+        Model model = spy(Model.class);
+        CentralStationPresenter SUT = new CentralStationPresenter(view, model);
+        SUT.action("Risolvi","A4,87");
+        verify(view).showError("segnalazione non presente per questo tratto");
+    }
 }
