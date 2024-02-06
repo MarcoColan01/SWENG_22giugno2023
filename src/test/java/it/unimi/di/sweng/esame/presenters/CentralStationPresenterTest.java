@@ -23,4 +23,12 @@ class CentralStationPresenterTest {
         SUT.action("Segnala", "A4,ciao,incidente");
         verify(view).showError("campo km non numerico");
     }
+
+    @Test
+    void testDescrizioneMancante(){
+        CentralStationView view = mock(CentralStationView.class);
+        CentralStationPresenter SUT = new CentralStationPresenter(view);
+        SUT.action("Segnala", "A4,87, ");
+        verify(view).showError("campo descrizione mancante");
+    }
 }
