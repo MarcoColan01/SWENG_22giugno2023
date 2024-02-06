@@ -29,5 +29,10 @@ public class DisplayRisoltePresenter implements Observer<List<Segnalazione>> {
         for(int j = 0; j < segnalazioni.size() && j < Main.PANEL_SIZE; j++){
             view.set(i++, segnalazioni.get(j));
         }
+        if(i < Main.PANEL_SIZE){
+            for(int j = i; j < Main.PANEL_SIZE; j++){
+                view.set(j, "");
+            }
+        }
     }
 }

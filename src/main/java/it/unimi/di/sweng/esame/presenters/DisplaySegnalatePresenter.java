@@ -26,9 +26,13 @@ public class DisplaySegnalatePresenter implements Observer<List<Segnalazione>> {
     public void update(@NotNull Observable<List<Segnalazione>> subject) {
         int i = 0;
         List<String> segnalazioni = strategy.showSegnalazioni(subject.getSegnalazioni());
-        System.out.println(segnalazioni);
         for(int j = 0; j < segnalazioni.size() && j < Main.PANEL_SIZE; j++){
             view.set(i++, segnalazioni.get(j));
+        }
+        if(i < Main.PANEL_SIZE){
+            for(int j = i; j < Main.PANEL_SIZE; j++){
+                view.set(j, "");
+            }
         }
     }
 }

@@ -40,10 +40,10 @@ class DisplayStrategyTest {
         segnalazioni.add(s3);
         segnalazioni.add(s4);
         assertThat(SUT.showSegnalazioni(segnalazioni)).containsExactly(
-                "Incidente sulla A1 al km 37",
-                "Incidente sulla A3 al km 85",
-                "Incidente sulla A4 al km 14",
-                "Incidente sulla A4 al km 45"
+                "Incidente sulla A1 al Km 37",
+                "Incidente sulla A3 al Km 85",
+                "Incidente sulla A4 al Km 14",
+                "Incidente sulla A4 al Km 45"
         );
     }
 
@@ -77,10 +77,10 @@ class DisplayStrategyTest {
         segnalazioni.add(s3);
         segnalazioni.add(s4);
         assertThat(SUT.showSegnalazioni(segnalazioni)).containsExactly(
-                "Incidente sulla A4 al km 45",
-                "Incidente sulla A1 al km 37",
-                "Incidente sulla A3 al km 85",
-                "Incidente sulla A4 al km 14"
+                "Incidente sulla A4 al Km 45",
+                "Incidente sulla A1 al Km 37",
+                "Incidente sulla A3 al Km 85",
+                "Incidente sulla A4 al Km 14"
         );
     }
 

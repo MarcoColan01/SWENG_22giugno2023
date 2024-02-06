@@ -22,6 +22,6 @@ public record Segnalazione(@NotNull String tratta, int km, @NotNull String descr
 
     @Override
     public String toString(){
-        return descrizione + " sulla " + tratta + " al km " + km;
+        return descrizione + " sulla " + tratta + " al Km " + km;
     }
 }

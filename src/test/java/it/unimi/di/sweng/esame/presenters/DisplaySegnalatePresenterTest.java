@@ -16,7 +16,7 @@ class DisplaySegnalatePresenterTest {
         DisplaySegnalatePresenter SUT = new DisplaySegnalatePresenter(model, view, new SegnalateStrategy());
         model.addSegnalazione(Segnalazione.creaSegnalazione("A4,54,Incidente"));
         model.addSegnalazione(Segnalazione.creaSegnalazione("A1,97,Traffico"));
-        verify(view).set(0, "Traffico sulla A1 al km 97");
-        verify(view).set(1, "Incidente sulla A4 al km 54");
+        verify(view).set(0, "Traffico sulla A1 al Km 97");
+        verify(view).set(1, "Incidente sulla A4 al Km 54");
     }
 }
