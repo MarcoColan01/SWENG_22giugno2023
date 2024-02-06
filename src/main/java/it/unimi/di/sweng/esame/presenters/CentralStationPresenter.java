@@ -1,5 +1,6 @@
 package it.unimi.di.sweng.esame.presenters;
 
+import it.unimi.di.sweng.esame.model.Segnalazione;
 import it.unimi.di.sweng.esame.views.CentralStationView;
 import org.jetbrains.annotations.NotNull;
 
@@ -12,21 +13,13 @@ public class CentralStationPresenter implements Presenter{
 
     @Override
     public void action(String comando, String args) {
-        String[] arg = args.split(",");
-        if(!arg[0].matches("[A-Z]\\d")){
-            view.showError("campo tratto non valido");
-            return;
+        if(comando.equals("Segnala")){
+            try{
+                Segnalazione segnalazione = Segnalazione.creaSegnalazione(args);
+                view.showSuccess();
+            }catch (IllegalArgumentException e){
+                view.showError(e.getMessage());
+            }
         }
-        try{
-            int km = Integer.parseInt(arg[1]);
-        }catch (NumberFormatException e){
-            view.showError("campo km non numerico");
-            return;
-        }
-        if(arg[2].isBlank()){
-            view.showError("campo descrizione mancante");
-            return;
-        }
-        view.showSuccess();
     }
 }
