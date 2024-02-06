@@ -83,7 +83,7 @@ public class GUITest {
     verifyThat(segnalazioniRisolte[0], hasText(matchesPattern("incidente sulla A4 al Km 57")));
   }
 
-  @Test@Disabled
+  @Test
   public void testSegnalaConErroreCampoMancante(FxRobot robot) {
     selezioneContenutoCasellaTesto(robot);
     robot.write("A4,57");
