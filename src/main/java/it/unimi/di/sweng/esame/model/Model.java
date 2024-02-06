@@ -34,6 +34,6 @@ public class Model {
                 risolte.put(segnalazioni.get(km).tratta(), segnalazioni.get(km));
                 segnalazioni.remove(km);
             }
-        }
+        }else throw new IllegalArgumentException("segnalazione non presente per questo tratto");
     }
 }

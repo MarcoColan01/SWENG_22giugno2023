@@ -31,4 +31,12 @@ class ModelTest {
         assertThat(SUT.getSegnalazioni()).hasSize(0);
         assertThat(SUT.getRisolte()).hasSize(1);
     }
+
+    @Test
+    void testRisolviSegnalazioneNonPresente(){
+        Model SUT = new Model();
+        assertThatThrownBy(() -> SUT.addSegnalazione(Segnalazione.creaSegnalazione("A4,57")))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("segnalazione non presente per questo tratto");
+    }
 }
