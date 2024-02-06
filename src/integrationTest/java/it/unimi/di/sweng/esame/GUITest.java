@@ -99,7 +99,7 @@ public class GUITest {
     verifyThat(errorMessage, hasText("campo km non numerico"));
   }
 
-  @Test@Disabled
+  @Test
   public void testSegnalaConErroreDoppiaSegnalazione(FxRobot robot) {
     selezioneContenutoCasellaTesto(robot);
     robot.write("A4,42,prova");
