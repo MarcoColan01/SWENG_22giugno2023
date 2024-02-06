@@ -30,7 +30,7 @@ public class CentralStationPresenter implements Presenter, Observer<List<Segnala
                 return;
             }
             view.showSuccess();
-        }else if(comando.equals("Risolvi")){
+        }else if(comando.equals("Risolto")){
             try{
                 model.removeSegnalazione(args);
             }catch (IllegalArgumentException e){

@@ -55,7 +55,7 @@ class CentralStationPresenterTest {
         CentralStationView view = mock(CentralStationView.class);
         Model model = spy(Model.class);
         CentralStationPresenter SUT = new CentralStationPresenter(view, model);
-        SUT.action("Risolvi","A4,87");
+        SUT.action("Risolto","A4,87");
         verify(view).showError("segnalazione non presente per questo tratto");
     }
 }
